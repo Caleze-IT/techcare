@@ -20,9 +20,9 @@ const nodemailer = require('nodemailer');
 // ── Variáveis de ambiente ──────────────────────────────────────
 // Crie um arquivo .env na raiz com este conteúdo:
 //
-//   EMAIL_USER=pedrocalderaro@live.com
+//   EMAIL_USER=email_do_user
 //   EMAIL_PASS=sua_senha_de_app_aqui
-//   EMAIL_TO=pedrocalderaro@live.com
+//   EMAIL_TO=Email_do_user
 //   PORT=3000
 //   ALLOWED_ORIGIN=https://seudominio.com.br
 //
