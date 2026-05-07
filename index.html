@@ -700,6 +700,246 @@
   @media (max-width: 600px) {
     .services-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── FORMULÁRIO DE CONTATO ── */
+  .contact-form-wrapper {
+    max-width: 720px;
+    margin: 64px auto 0;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+  }
+
+  .form-header {
+    padding: 16px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .form-header-dots { display: flex; gap: 6px; }
+  .form-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+  .form-dot.red    { background: rgba(255,95,87,0.6); }
+  .form-dot.yellow { background: rgba(255,189,46,0.6); }
+  .form-dot.green  { background: rgba(40,200,64,0.6); }
+
+  .form-header-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    margin-left: 8px;
+  }
+
+  .contact-form {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(0,229,255,0.12);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300e5ff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  .form-select option { background: #17212b; color: var(--text); }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: rgba(107,122,141,0.5);
+    font-size: 13px;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: rgba(0,229,255,0.45);
+    box-shadow: 0 0 0 3px rgba(0,229,255,0.06);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+  }
+
+  .form-urgency { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .urgency-opt { display: none; }
+
+  .urgency-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .urgency-opt:checked + .urgency-label {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,229,255,0.06);
+  }
+
+  .urgency-opt.red:checked + .urgency-label {
+    border-color: #ff5f57;
+    color: #ff5f57;
+    background: rgba(255,95,87,0.06);
+  }
+
+  .form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .form-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    opacity: 0.6;
+    letter-spacing: 0.06em;
+  }
+
+  .btn-submit {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 15px 32px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-submit:hover:not(:disabled) {
+    background: #00c8e0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,229,255,0.25);
+  }
+
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .btn-submit .btn-spinner {
+    display: none;
+    width: 14px;
+    height: 14px;
+    border: 2px solid transparent;
+    border-top-color: var(--bg);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+
+  .btn-submit.loading .btn-text    { display: none; }
+  .btn-submit.loading .btn-spinner { display: block; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .form-feedback {
+    display: none;
+    padding: 14px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    border: 1px solid;
+  }
+
+  .form-feedback.success {
+    display: block;
+    border-color: rgba(0,255,157,0.3);
+    color: var(--accent3);
+    background: rgba(0,255,157,0.05);
+  }
+
+  .form-feedback.error {
+    display: block;
+    border-color: rgba(255,95,87,0.3);
+    color: #ff8a82;
+    background: rgba(255,95,87,0.05);
+  }
+
+  .char-counter {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    opacity: 0.5;
+    text-align: right;
+    margin-top: -16px;
+  }
+
+  .char-counter.warn  { color: #ffbd2e; opacity: 1; }
+  .char-counter.limit { color: #ff5f57; opacity: 1; }
+
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 24px; }
+    .form-header { padding: 16px 24px; }
+    .form-footer { flex-direction: column; align-items: stretch; }
+    .btn-submit { justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -1031,7 +1271,7 @@
   <h2 class="section-title">Entre em contato</h2>
   <p class="section-desc">
     Tem um ambiente crítico com problemas? Uma infraestrutura que precisa escalar?
-    Quer um profissional que realmente entende o que está em jogo?
+    Preencha abaixo e retorno em até 24h.
   </p>
 
   <div class="contact-options">
@@ -1039,15 +1279,10 @@
       <span class="c-icon">📱</span>
       <div class="c-info">
         <div class="c-label">WhatsApp</div>
-        <div class="c-val">Enviar mensagem</div>
+        <div class="c-val">Envio direto</div>
       </div>
     </a>
-    <a href="mailto: pedrocalderaro@live.com" class="contact-card">
-      <span class="c-icon">✉️</span>
-      <div class="c-info">
-        <div class="c-label">E-mail</div>
-        <div class="c-val">Entre em contato por email</div>
-      </div>
+   
     </a>
     <a href="https://www.linkedin.com/in/pedro-henrique-rezende-de-souza-0518a3237/" class="contact-card" target="_blank">
       <span class="c-icon">💼</span>
@@ -1057,6 +1292,88 @@
       </div>
     </a>
   </div>
+
+  <!-- Formulário -->
+  <div class="contact-form-wrapper">
+    <div class="form-header">
+      <div class="form-header-dots">
+        <span class="form-dot red"></span>
+        <span class="form-dot yellow"></span>
+        <span class="form-dot green"></span>
+      </div>
+      <span class="form-header-title">// nova_solicitacao.form</span>
+    </div>
+
+    <div class="contact-form">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome</label>
+          <input class="form-input" type="text" id="nome" name="nome"
+            placeholder="Seu nome completo" maxlength="80" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">E-mail</label>
+          <input class="form-input" type="email" id="email" name="email"
+            placeholder="seu@email.com" maxlength="120" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="empresa">Empresa <span style="opacity:.4;font-size:9px">(opcional)</span></label>
+          <input class="form-input" type="text" id="empresa" name="empresa"
+            placeholder="Nome da empresa" maxlength="80" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="tipo">Tipo de problema</label>
+          <select class="form-select" id="tipo" name="tipo" required>
+            <option value="" disabled selected>Selecione uma área</option>
+            <option value="infraestrutura">Infraestrutura / Servidores</option>
+            <option value="redes">Redes / Conectividade</option>
+            <option value="seguranca">Segurança / AD</option>
+            <option value="erp">ERP / Banco de dados</option>
+            <option value="cloud">Cloud / Backup</option>
+            <option value="automacao">Automação / Otimização</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Urgência</label>
+        <div class="form-urgency">
+          <input class="urgency-opt" type="radio" name="urgencia" id="urg-baixa" value="baixa" checked />
+          <label class="urgency-label" for="urg-baixa">🟢 Planejamento</label>
+
+          <input class="urgency-opt" type="radio" name="urgencia" id="urg-media" value="media" />
+          <label class="urgency-label" for="urg-media">🟡 Essa semana</label>
+
+          <input class="urgency-opt red" type="radio" name="urgencia" id="urg-critica" value="critica" />
+          <label class="urgency-label" for="urg-critica">🔴 Ambiente parado</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="mensagem">Descreva o problema</label>
+        <textarea class="form-textarea" id="mensagem" name="mensagem"
+          placeholder="Descreva o ambiente, o problema e o impacto operacional..."
+          maxlength="1000" required></textarea>
+        <div class="char-counter" id="charCount">0 / 1000</div>
+      </div>
+
+      <div class="form-feedback" id="formFeedback"></div>
+
+      <div class="form-footer">
+        <span class="form-note">// Retorno em até 24h</span>
+        <button class="btn-submit" id="submitBtn" type="button">
+          <span class="btn-text">Enviar solicitação →</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -1065,5 +1382,90 @@
   <div class="footer-copy">© 2025 — Todos os direitos reservados</div>
 </footer>
 
+<script>
+(function () {
+  'use strict';
+
+  // Troque pela URL do seu backend quando subir pro servidor
+  // Em desenvolvimento local com Live Server do VS Code: http://localhost:3000
+  const API_URL = 'http://localhost:3000/api/contato';
+
+  const btn      = document.getElementById('submitBtn');
+  const feedback = document.getElementById('formFeedback');
+  const textarea = document.getElementById('mensagem');
+  const counter  = document.getElementById('charCount');
+
+  // Contador de caracteres
+  textarea.addEventListener('input', function () {
+    const len = this.value.length;
+    counter.textContent = len + ' / 1000';
+    counter.className = 'char-counter';
+    if (len > 850)  counter.classList.add('warn');
+    if (len >= 1000) counter.classList.add('limit');
+  });
+
+  function validate(data) {
+    if (!data.nome.trim() || data.nome.trim().length < 2)
+      return 'Preencha seu nome.';
+    if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
+      return 'E-mail inválido.';
+    if (!data.tipo)
+      return 'Selecione o tipo de problema.';
+    if (!data.mensagem.trim() || data.mensagem.trim().length < 20)
+      return 'Descreva o problema (mínimo 20 caracteres).';
+    return null;
+  }
+
+  function showFeedback(msg, type) {
+    feedback.textContent = '> ' + msg;
+    feedback.className = 'form-feedback ' + type;
+  }
+
+  btn.addEventListener('click', async function () {
+    const data = {
+      nome:     document.getElementById('nome').value,
+      email:    document.getElementById('email').value,
+      empresa:  document.getElementById('empresa').value,
+      tipo:     document.getElementById('tipo').value,
+      urgencia: document.querySelector('input[name="urgencia"]:checked').value,
+      mensagem: textarea.value,
+    };
+
+    const erro = validate(data);
+    if (erro) { showFeedback(erro, 'error'); return; }
+
+    btn.disabled = true;
+    btn.classList.add('loading');
+    feedback.className = 'form-feedback';
+
+    try {
+      const res  = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+
+      if (res.ok) {
+        showFeedback('Solicitação enviada! Retorno em até 24h.', 'success');
+        document.getElementById('nome').value    = '';
+        document.getElementById('email').value   = '';
+        document.getElementById('empresa').value = '';
+        document.getElementById('tipo').value    = '';
+        textarea.value = '';
+        counter.textContent = '0 / 1000';
+        document.getElementById('urg-baixa').checked = true;
+      } else {
+        showFeedback(json.erro || 'Erro ao enviar. Tente novamente.', 'error');
+      }
+    } catch (err) {
+      showFeedback('Servidor indisponível. Use o WhatsApp ou e-mail por ora.', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+  });
+})();
+</script>
 </body>
 </html>
